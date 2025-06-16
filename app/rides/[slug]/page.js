@@ -1,23 +1,22 @@
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
-
 const API_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL;
-if (!API_URL) throw new Error("STRAPI API URL is not defined");
-
-export async function generateStaticParams() {
-  const res = await fetch(`${API_URL}/api/rides`, { cache: 'no-store' });
-  const data = await res.json();
-  return data.data.map((ride) => ({ slug: ride.documentId }));
-}
 
 export default async function RideDetailPage({ params }) {
   const { slug } = params;
 
-  const res = await fetch(`${API_URL}/api/rides`, { cache: 'no-store' });
-  const data = await res.json();
-  const ride = data.data.find((r) => r.documentId === slug);
+  const res = await fetch(`${API_URL}/api/rides?filters[documentId][$eq]=${slug}`, {
+    cache: 'no-store',
+  });
 
-  if (!ride) notFound();
+  if (!res.ok) {
+    throw new Error(`Failed to fetch ride for slug: ${slug}`);
+  }
+
+  const data = await res.json();
+  const ride = data.data?.[0];
+
+  if (!ride) {
+    notFound();
+  }
 
   const { title, ride_date, detailed_write_up, author } = ride;
 
