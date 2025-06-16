@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 
-const API_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337';
+const API_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL;
+if (!API_URL) throw new Error("STRAPI API URL is not defined");
 
 export async function generateStaticParams() {
   const res = await fetch(`${API_URL}/api/rides`, { cache: 'no-store' });
