@@ -1,15 +1,18 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 
+const API_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337';
+
 export async function generateStaticParams() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/rides`, { cache: 'no-store' });
+  const res = await fetch(`${API_URL}/api/rides`, { cache: 'no-store' });
   const data = await res.json();
   return data.data.map((ride) => ({ slug: ride.documentId }));
 }
 
 export default async function RideDetailPage({ params }) {
   const { slug } = params;
-  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/rides`, { cache: 'no-store' });
+
+  const res = await fetch(`${API_URL}/api/rides`, { cache: 'no-store' });
   const data = await res.json();
   const ride = data.data.find((r) => r.documentId === slug);
 

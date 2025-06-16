@@ -1,9 +1,11 @@
 import Link from 'next/link';
 
+const API_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337';
+
 // Fetch ride data from Strapi
 async function getRides() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/rides`, {
+    const res = await fetch(`${API_URL}/api/rides`, {
       cache: 'no-store',
     });
     if (!res.ok) throw new Error('Failed to fetch rides');
