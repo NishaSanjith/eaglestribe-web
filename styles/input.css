@@ -8,7 +8,7 @@
     --font-heading: "Playfair Display", serif;
     --font-body: "Inter", sans-serif;
 
-    --color-background: oklch(97.5% 0.01 85);     /* Creamy Beige */
+    --color-background: oklch(74.973% 0.05184 80.853);     /* Creamy Beige */
     --color-foreground: oklch(20% 0.02 50);       /* Deep Charcoal */
     --color-primary: oklch(60% 0.23 25);          /* Muted Deep Red */
     --color-secondary: oklch(75% 0.15 55);        /* Warm Sand */
