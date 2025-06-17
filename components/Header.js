@@ -76,8 +76,8 @@ export default function Header() {
                   href={path}
                   className={`font-body font-semibold text-lg transition-all duration-300 ${
                     isActive(path)
-                      ? "text-dark scale-110 font-bold drop-shadow-md"
-                      : "text-dark/80 hover:dark hover:scale-105"
+                      ? "text-brown-gradient scale-110 font-bold drop-shadow-md"
+                      : "text-brown-gradient/80 hover:text-brown-gradient hover:scale-105"
                   }`}
                 >
                   {name}
@@ -91,8 +91,8 @@ export default function Header() {
                   href={path}
                   className={`font-body font-semibold text-lg transition-all duration-300 ${
                     isActive(path)
-                      ? "text-dark scale-110 font-bold drop-shadow-md"
-                      : "text-dark/80 hover:text-dark hover:scale-105"
+                      ? "text-brown-gradient scale-110 font-bold drop-shadow-md"
+                      : "text-brown-gradient/80 hover:text-brown-gradient hover:scale-105"
                   }`}
                 >
                   {name}
